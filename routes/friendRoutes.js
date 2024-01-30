@@ -6,6 +6,8 @@ const {
 
 
 // /api/users/:userId/friends/:friendId
-router.route('/:friendId').put(newFriend).delete(deleteFriend);
+router.route('/:friendId')
+  .put(newFriend)
+  .delete(deleteFriend);
 
 module.exports = router;
