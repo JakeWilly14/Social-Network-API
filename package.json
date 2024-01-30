@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "name": "social-network-api",
+  "description": "A backend API that uses a NoSQL database that can handle large amounts of unstructured data.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JakeWilly14"
+  },
+  "author": "Jacob Williams",
+  "license": "ISC"
+}
