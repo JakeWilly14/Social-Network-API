@@ -5,9 +5,12 @@ const {
 } = require('../controllers/friendController.js')
 
 
-// /api/users/:userId/friends/:friendId
-router.route('/:friendId')
-  .put(newFriend)
+// /api/users/:userId/friends
+router.route('/:userId/friends')
+  .put(newFriend);
+
+// /api/users/:userId/friends/friendId
+router.route('/:userId/friends/:friendId')
   .delete(deleteFriend);
 
 module.exports = router;
