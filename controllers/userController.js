@@ -17,6 +17,8 @@ module.exports = {
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({_id: req.params.userId})
+      .populate({ path: 'thoughts', select: '-__v' })
+      .populate({ path: 'friends', select: '-__v' });
 
       if (!user) {
         return res.status(404).json({ message: 'No user with that ID'})
@@ -24,7 +26,6 @@ module.exports = {
 
       res.json(user);
     } catch (err) {
-      console.log(err);
       return res.status(500).json(err)
     }
   },
@@ -67,33 +68,13 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: 'No such user exists' });
       }
+      await Thought.deleteMany({ _id: { $in: user.thoughts } });
 
-      res.json({ message: 'User successfully deleted' });
+      res.json({ message: 'User and thoughts successfully deleted' });
     } catch (err) {
-      console.log(err);
       res.status(500).json(err);
     }
   },
-
-  // Delete a thought from associated user 
-    async removeThought(req, res) {
-      try {             
-        const user = await User.findOneAndUpdate(
-          { _id: req.params.userId },
-          { $pull: {thoughts: req.params.thoughtId} },
-          { runValidators: true, new: true }
-        );
-        
-        if (!req.params.thoughtId) {
-          return res.status(404).json({ message: 'No such thought exists' });
-        }
-  
-        res.json({ message: 'Thought successfully deleted' }, user);
-      } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-      }
-    },
 
   // Update an associated user with a friend
   async newFriend(req, res) {
