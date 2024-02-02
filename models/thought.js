@@ -18,7 +18,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       // timeSince is a function and we use the json version of the model when we fetch it.
-      get: (date) => timeSince(date),
+      default: Date.now,
     },
   },
   {
