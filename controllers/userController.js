@@ -108,7 +108,7 @@ module.exports = {
         res.status(404).json({ message: 'No user with this id!' });
       }
 
-      res.json({ message: 'Successfully added a new friend.' }, user);
+      res.json({ message: 'Successfully added a new friend.' });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -127,7 +127,7 @@ module.exports = {
         res.status(404).json({ message: 'No user with this id!' });
       }
 
-      res.json({ message: 'Successfully added a new friend.' }, user);
+      res.json({ message: 'Successfully deleted a friend.' });
     } catch (err) {
       res.status(500).json(err);
     }
