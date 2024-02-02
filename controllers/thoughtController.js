@@ -4,11 +4,12 @@ module.exports = {
   // Get all thoughts
   async getThoughts(req, res) {
     try {
-      const thoughts = await Thought.find({});
+      const thoughts = await Thought.find();
 
       res.json(thoughts);
     } catch (err) {
       res.status(500).json(err);
+      console.log('here', err)
     }
   },
 
@@ -73,7 +74,7 @@ module.exports = {
   // Delete a thought
   async deleteThought(req, res) {
     try {
-      const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
       if (!thought) {
         return res.status(404).json({ message: 'No thought with this id!' });
