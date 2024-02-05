@@ -100,10 +100,9 @@ module.exports = {
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $pull: {friends: req.param.friendId} },
+        { $pull: {friends: req.params.friendId} },
         { runValidators: true, new: true }
       );
-
       if (!user) {
         res.status(404).json({ message: 'No user with this id!' });
       }
