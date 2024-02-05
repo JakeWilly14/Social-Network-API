@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const moment = require('moment')
 
 const reactionSchema = new Schema(
   {
@@ -17,13 +18,15 @@ const reactionSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      // timeSince is a function and we use the json version of the model when we fetch it.
       default: Date.now,
+      get: timestamp => moment(timestamp).format('LLL'),
     },
   },
   {
-    timestamps: true,
-    toJSON: { getters: true, virtuals: true },
+    toJSON: { 
+      getters: true, 
+      virtuals: true 
+    },
   },
 );
 
@@ -39,6 +42,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: timestamp => moment(timestamp).format('LLL'),
     },
     username: [
       {
@@ -46,11 +50,13 @@ const thoughtSchema = new Schema(
         required: true,
       },
     ],
-    reactions: [reactionSchema],
+    reactions: [reactionSchema], 
   },
   {
-    timestamps: true,
-    toJSON: { getters: true, virtuals: true },
+    toJSON: { 
+      getters: true, 
+      virtuals: true 
+    },
     id: false,
   },
 );
