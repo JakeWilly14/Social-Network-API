@@ -26,6 +26,8 @@
   
   ## Usage
   In the integrated terminal from earlier run the CLI code 'node index.js'. This starts our application from the index.js file. From here we will need an API client to view our database. I have chosen insomnia for the demonstration. In your API client platform you can complete basic CRUD commands for adding users, thoughts, reaction to thoughts, and even add other users ass friends.
+
+  Walkthrough video [video](https://drive.google.com/file/d/1M0b5ICZbO8lWt5PUFFXIlLKUod5ZJZjR/view?usp=sharing)
   
   ## Contributors
   This application is a for a student repository.
